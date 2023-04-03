@@ -1,0 +1,90 @@
+#include <iostream>
+#include <conio.h>
+#include <string>
+using std::cout; using std::cin; using std::endl; using std::string;
+
+// Funciones a ocupar:
+int Menu(); 
+void Users();
+void Tablero();
+void game(string &name1, string &name2);
+
+int main()
+{
+    string name1,name2;
+  switch (Menu())
+    {
+        case 1: 
+            Users();
+            game(name1,name2);
+            Tablero();
+            break;
+        case 2:
+            exit(0);
+        default:
+        cout << "Invalid Input, try again " << endl;
+        break;
+    }
+    return 0;
+}
+int Menu()
+{
+    int op;
+    cout << endl;
+    cout << "---Welcome user, a the Gato's Game--- " << endl;
+    cout << " ?What do you want to do? " << endl;
+    cout << "1. Play the game " << endl;
+    cout << "2. Exit " << endl;
+    cin >> op;
+
+    return op; 
+}
+void Users()
+{
+    system("clear");
+    string name1,name2;
+
+    fflush(stdin);
+    cout << "Enter a first player: ";
+    getline(cin,name1);
+    fflush(stdin);
+    cout << "Enter a second player: ";
+    getline(cin,name2);
+
+    system("clear");
+    cout << "\tWelcome ->" << name1 << "  and -> " << name2 << endl;
+}
+void Tablero()
+{
+    int matriz[3][3] = {1,2,3,4,5,6,7,8,9};
+
+    system("clear");
+    cout << endl;
+    cout << "    " << matriz[0][0] << "  |  " << matriz[0][1] << "  |  " << matriz[0][2] << endl; // Space " "-> 4
+    cout << "   " << "---------------" << endl;
+    cout << "    " << matriz[1][0] << "  |  " << matriz[1][1] << "  |  " << matriz[1][2] << endl; // Space " "-> 4
+    cout << "   " << "---------------" << endl;
+    cout << "    " << matriz[2][0] << "  |  " << matriz[2][1] << "  |  " << matriz[2][2] << endl; // Space " "-> 4
+    cout << endl;
+} 
+void game(string &name1, string &name2)
+{
+    char op1, op2;
+    cout << "\nPlayer 1: " << name1 << endl;;
+    cout << "Choose your value: 'X or O' -> ";
+    cin >> op1;
+
+    cout << "Player 2: " << name2 << endl;
+    cout << "Choose your value different from the last player: 'X or O' -> ";
+    if(op2 != op1)
+    {
+        cin >> op2;
+    }
+    else
+    {
+        cout << "Error!= Card already chosen" << endl;
+    }
+
+    Tablero();
+    cout << "Player 1, choose where you want place your file: "; 
+}
